@@ -4,12 +4,12 @@ using static Bookstore.Services.ICrudService;
 
 namespace Bookstore.Services
 {
-    public interface BookService
+    public interface IBookService
     {
-        public class BookService : ICrudService<BookItem, int>
+        public class IBookService : ICrudService<BookItem, int>
         {
             private readonly ICrudRepository<BookItem, int> _todoRepository;
-            public BookService(ICrudRepository<BookItem, int> BookRepository)
+            public IBookService(ICrudRepository<BookItem, int> BookRepository)
             {
                 _todoRepository = BookRepository;
             }
@@ -34,7 +34,7 @@ namespace Bookstore.Services
             public void Update(BookItem old, BookItem newT)
             {
                 old.Description = newT.Description;
-               // old.Status = newT.Status;
+              
                 _todoRepository.Update(old);
                 _todoRepository.Save();
             }

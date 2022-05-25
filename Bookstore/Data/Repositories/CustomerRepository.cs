@@ -7,8 +7,8 @@ namespace Bookstore.Data.Repositories
     {
         public class CustomerRepository : ICrudRepository<Customer, int>
         {
-            private readonly CustomerContext _todoContext;
-            public CustomerRepository(CustomerContext CustomerContext)
+            private readonly BookContext _todoContext;
+            public CustomerRepository(BookContext CustomerContext)
             {
                 _todoContext = CustomerContext ?? throw new
                 ArgumentNullException(nameof(CustomerContext));
