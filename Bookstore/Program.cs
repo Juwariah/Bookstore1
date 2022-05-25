@@ -4,6 +4,10 @@ using Bookstore.Data;
 using Bookstore.Data.Repositories;
 using Bookstore.Models;
 using Bookstore.Services;
+using static Bookstore.Data.Repositories.ICRUDRepository;
+using static Bookstore.Services.ICrudService;
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,8 +16,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<BookContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-builder.Services.AddScoped<ICRUDRepository<BookItem, int>, BookRepository>();
-builder.Services.AddScoped<ICrudService<TodoItem, int>, TodoService>();
+builder.Services.AddScoped<ICrudRepository<BookItem, int>, BookRepository>();
+builder.Services.AddScoped<ICrudService<BookItem, int>, BookService>();
+
+
+
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();

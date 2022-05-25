@@ -12,7 +12,9 @@ namespace Bookstore.Data
 
             }
             public DbSet<BookItem> BookItems { get; set; }
-        
+        public DbSet<Order> Order { get; set; }
+        public DbSet<Customer> Customer { get; set; }
+
 
     }
 }
